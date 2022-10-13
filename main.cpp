@@ -4,15 +4,19 @@ using namespace std;
 
 class sekerMakinesi {
 public:
-  int toplamSeker = 10, alabilecekSeker, paraUstu;
+  int toplamSeker, alabilecekSeker, paraUstu;
   int paraKontrol(int);
   void sekerVer(int);
+  sekerMakinesi(int);
 };
+
+sekerMakinesi::sekerMakinesi(int seker) { toplamSeker = seker; }
 
 int sekerMakinesi::paraKontrol(int para) {
   alabilecekSeker = para / 2;
   if (alabilecekSeker < 1) {
     cout << "Yetersiz para." << endl;
+    return 0;
   } else {
     return alabilecekSeker;
   }
@@ -38,11 +42,10 @@ void sekerMakinesi::sekerVer(int alabilecekSeker) {
 int main() {
   int para;
   cout << "***1 şeker 2tl***" << endl;
-  cout << "Makinada 10 şeker var" << endl;
   cout << "Ne kadar para atıcaksınız ?" << endl;
   cin >> para;
 
-  sekerMakinesi makine1;
+  sekerMakinesi makine1(100);//içinde ne kadar şeker olduğunu yaz
   int alabilecekSeker = makine1.paraKontrol(para);
   makine1.sekerVer(alabilecekSeker);
 }
